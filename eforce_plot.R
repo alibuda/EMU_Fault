@@ -9,7 +9,7 @@ summary(temp)
 
 for(i in 1:nrow(dn)){
     for(j in 1:nrow(dn))
-        dn[i,j] <- ifelse(dn[i,j]<12,0,dn[i,j])
+        dn[i,j] <- ifelse(dn[i,j]<13,0,dn[i,j])
 }
 
 plot(eForce(dn))

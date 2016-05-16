@@ -4,7 +4,7 @@ library(Rwordseg)
 setwd("E:/Ruitian")
 
 data <- read.xlsx2('2016年动车组故障汇总.xls',sheetIndex = 1,startRow = 2,colIndex = c(2,8,10:11),stringsAsFactors = F)
-
+data_all <- apply(data, 1, paste,collapse = ' ')
 
 keywords <- read.csv("keyword.csv",header = F,stringsAsFactors = F)
 insertWords(unlist(keywords))
