@@ -4,7 +4,7 @@ library(Rwordseg)
 setwd("E:/Ruitian")
 
 data <- read.xlsx2('2016年动车组故障汇总.xls',sheetIndex = 1,startRow = 2,colIndex = c(2,8,10:11),stringsAsFactors = F)
-data_all <- apply(data, 1, paste,collapse = ' ')
+
 
 keywords <- read.csv("keyword.csv",header = F,stringsAsFactors = F)
 insertWords(unlist(keywords))
@@ -12,7 +12,8 @@ stopword <- c('车','故障')
 
 n <- 2;sparse <- 0.99
 for(n in 1:4){
-    temp <- segmentCN(unlist(data[,1:n]),returnType = 'tm')
+    data_all <- apply(data[,1:n], 1, paste,collapse = ' ')
+    temp <- segmentCN(data_all,returnType = 'tm')
     CRH_F <- VCorpus(VectorSource(temp))
     CRH_F <- tm_map(CRH_F,stripWhitespace)
     CRH_F <- tm_map(CRH_F,removeNumbers)
