@@ -1,5 +1,5 @@
 setwd("E:/Ruitian")
-load('dn2.RData')
+load('dn.RData')
 library(recharts)
 
 dn <- dn2
@@ -9,7 +9,7 @@ summary(temp)
 
 for(i in 1:nrow(dn)){
     for(j in 1:nrow(dn))
-        dn[i,j] <- ifelse(dn[i,j]<13,0,dn[i,j])
+        dn[i,j] <- ifelse(dn[i,j]<18,0,dn[i,j])
 }
 
 plot(eForce(dn))
